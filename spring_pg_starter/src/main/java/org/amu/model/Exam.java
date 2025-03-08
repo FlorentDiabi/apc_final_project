@@ -1,5 +1,7 @@
 package org.amu.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,7 +11,7 @@ import java.util.Set;
 public class Exam {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     private String title;
 
@@ -26,22 +28,23 @@ public class Exam {
             joinColumns = @JoinColumn(name = "exam_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id")
     )
+//    @JsonManagedReference
     private Set<User> students = new HashSet<>();
 
     public Exam() {
 
     }
 
-    public Exam(long id, String title) {
+    public Exam(Long id, String title) {
         this.id = id;
         this.title = title;
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,5 +80,13 @@ public class Exam {
             return;
         }
         this.questions.remove(question);
+    }
+
+    public Set<User> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<User> students) {
+        this.students = students;
     }
 }

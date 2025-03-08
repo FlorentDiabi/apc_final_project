@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface ExamRepository extends CrudRepository<Exam, Integer> {
+public interface ExamRepository extends CrudRepository<Exam, Long> {
     @Query("SELECT e FROM Exam e WHERE e.user.username = :username ORDER BY e.id ASC")
     Optional<Exam> findFirstExamByTeacherUsername(@Param("username") String username);
 }
