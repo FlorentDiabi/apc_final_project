@@ -2,5 +2,5 @@ package org.amu.repository;
 
 import org.amu.model.Quiz;
 
-public interface QuizRepository extends CrudRepository<Quiz, Integer>{
+public interface QuizRepository extends CrudRepository<Quiz, Long>{
 }
