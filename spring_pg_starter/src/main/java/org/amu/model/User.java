@@ -47,6 +47,7 @@ public class User {
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
+//    @JsonBackReference
     private Set<Course> courses = new HashSet<>();
 
     public User(){
