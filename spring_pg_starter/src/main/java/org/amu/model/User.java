@@ -34,7 +34,7 @@ public class User {
     @Column
     private String lastName;
 
-    /** Encrypted password of the user. */
+    /** Password of the user. */
     @Column
     private String password;
 
@@ -184,7 +184,7 @@ public class User {
     }
 
     /**
-     * Gets the encrypted password of the user.
+     * Gets the password of the user.
      *
      * @return the password
      */
@@ -193,7 +193,7 @@ public class User {
     }
 
     /**
-     * Sets the encrypted password of the user.
+     * Sets the password of the user.
      *
      * @param password the password
      */
