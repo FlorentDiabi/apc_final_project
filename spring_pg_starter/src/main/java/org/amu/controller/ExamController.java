@@ -8,37 +8,66 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller for managing exams in the system.
+ * Provides REST endpoints for CRUD operations on exams.
+ */
 @RestController
 public class ExamController {
 
     @Autowired
     private ExamService examService;
 
-    // Récupérer tous les examens
+    /**
+     * Retrieves all exams.
+     *
+     * @return a list of all exams
+     */
     @GetMapping("/exams")
     public List<Exam> getAllExams() {
         return examService.getAllExams();
     }
 
-    // Récupérer un examen par ID
+    /**
+     * Retrieves an exam by its ID.
+     *
+     * @param id the ID of the exam to retrieve
+     * @return a ResponseEntity containing the exam if found, or a 404 if not found
+     */
     @GetMapping("/exams/get/{id}")
     public ResponseEntity<Exam> getExamById(@PathVariable Long id) {
         return examService.getExamById(id);
     }
 
-    // Créer un nouvel examen
+    /**
+     * Creates a new exam.
+     *
+     * @param exam the exam object to be created
+     * @return a ResponseEntity containing the created exam
+     */
     @PostMapping("/exams/new")
     public ResponseEntity<Exam> createExam(@RequestBody Exam exam) {
         return examService.createExam(exam);
     }
 
-    // Mettre à jour un examen existant
+    /**
+     * Updates an existing exam.
+     *
+     * @param id the ID of the exam to update
+     * @param updatedExam the exam object containing updated data
+     * @return a ResponseEntity containing the updated exam
+     */
     @PutMapping("/exams/get/{id}")
     public ResponseEntity<Exam> updateExam(@PathVariable Long id, @RequestBody Exam updatedExam) {
         return examService.updateExam(id, updatedExam);
     }
 
-    // Supprimer un examen
+    /**
+     * Deletes an exam by its ID.
+     *
+     * @param id the ID of the exam to delete
+     * @return a ResponseEntity indicating the result of the deletion
+     */
     @DeleteMapping("/exams/delete/{id}")
     public ResponseEntity<Void> deleteExam(@PathVariable Long id) {
         return examService.deleteExam(id);

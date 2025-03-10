@@ -8,37 +8,66 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller for managing courses in the system.
+ * Provides REST endpoints for CRUD operations on courses.
+ */
 @RestController
 public class CourseController {
 
     @Autowired
     private CourseService courseService;
 
-    // Récupérer tous les cours
+    /**
+     * Retrieves all courses.
+     *
+     * @return a list of all courses
+     */
     @GetMapping("/courses")
     public List<Course> getAllCourses() {
         return courseService.getAllCourses();
     }
 
-    // Récupérer un cours par ID
+    /**
+     * Retrieves a course by its ID.
+     *
+     * @param id the ID of the course to retrieve
+     * @return a ResponseEntity containing the course if found, or a 404 if not found
+     */
     @GetMapping("/courses/get/{id}")
     public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
         return courseService.getCourseById(id);
     }
 
-    // Créer un nouveau cours
+    /**
+     * Creates a new course.
+     *
+     * @param course the course object to be created
+     * @return a ResponseEntity containing the created course
+     */
     @PostMapping("/courses/new")
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         return courseService.createCourse(course);
     }
 
-    // Mettre à jour un cours existant
+    /**
+     * Updates an existing course.
+     *
+     * @param id the ID of the course to update
+     * @param updatedCourse the course object containing updated data
+     * @return a ResponseEntity containing the updated course
+     */
     @PutMapping("/courses/get/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course updatedCourse) {
         return courseService.updateCourse(id, updatedCourse);
     }
 
-    // Supprimer un cours
+    /**
+     * Deletes a course by its ID.
+     *
+     * @param id the ID of the course to delete
+     * @return a ResponseEntity indicating the result of the deletion
+     */
     @DeleteMapping("/courses/delete/{id}")
     public ResponseEntity<Object> deleteCourse(@PathVariable Long id) {
         return courseService.deleteCourse(id);
